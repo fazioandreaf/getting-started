@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  app-root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 20%;
+  }
+  .container {
+    border: 3px solid #1976d2;
+    border-radius: 0px 0px 4px 5px;
+    padding: 1rem;
+  }
+}
