@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-// serve per ricevere i dati , esempio il product dall'altro component
+// serve per ricevere i dati dal padre, esempio il product dall'altro component
 import { Input } from '@angular/core';
 
 // serve per mandare una informazione ad un altro compoonente
@@ -16,6 +16,8 @@ import { Product } from '../products';
 })
 export class ProductAlertsComponent implements OnInit {
   @Input() product!: Product;
+  //  to emit an event when the value of the notify property changes.
+  @Output() notify = new EventEmitter();
   constructor() {}
   // A lifecycle hook that is called after Angular has initialized all data-bound properties of a directive. Define an ngOnInit() method to handle any additional initialization tasks.
   ngOnInit() {

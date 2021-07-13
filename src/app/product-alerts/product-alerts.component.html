@@ -1,6 +1,4 @@
-
-
 <!-- questo product viene passato quando lo vado a richiamare da un altra parte, passandolo con le [] -->
 <p *ngIf="product && product.price > 700">
-  <button>Notify Me</button>
+  <button (click)="notify.emit()">Notify Me</button>
 </p>
