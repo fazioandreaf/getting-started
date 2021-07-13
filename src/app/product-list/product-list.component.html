@@ -2,8 +2,11 @@
 
 <div *ngFor="let product of products">
   <h3>
-    <!-- QUEL title mi permette di avere una custom text durante l hover -->
-    <a [title]="product.name + ' details'">
+    <!-- QUEL title mi permette di avere una custom text durante l hover, il router link permette di modificare l urloe aggiungendo un id -->
+    <a
+      [title]="product.name + ' details'"
+      [routerLink]="['/products', product.id]"
+    >
       {{ product.name }}
     </a>
   </h3>

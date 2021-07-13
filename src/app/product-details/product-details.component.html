@@ -1,0 +1,9 @@
+<!-- questo product viene passato quando lo vado a richiamare da un altra parte, passandolo con le [] -->
+<h2>Product Details</h2>
+
+<div *ngIf="product">
+  <h3>{{ product.name }}</h3>
+  <h4>{{ product.price | currency }}</h4>
+  <p>{{ product.description }}</p>
+
+</div>
