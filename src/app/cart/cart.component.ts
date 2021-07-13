@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 
+import { CartService } from '../cart.service';
+
 // serve per ricevere i dati dal padre, esempio il product dall'altro component
 import { Input } from '@angular/core';
 
@@ -9,7 +11,6 @@ import { Input } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 
 // prendo un array da un ts, come se fosse un json
-import { Product } from '../products';
 
 @Component({
   selector: 'app-cart',
@@ -17,7 +18,11 @@ import { Product } from '../products';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
-  @Input() product!: Product;
-  constructor() {}
-  ngOnInit() {}
+  // il product non serve perchè lo tiriamo dal servizio
+  constructor(private cartService: CartService) {}
+  items = this.cartService.getItems();
+  // items diventa un array di oggetti
+  ngOnInit() {
+    // console.log(this.items);
+  }
 }
