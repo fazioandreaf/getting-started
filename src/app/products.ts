@@ -1,3 +1,4 @@
+// definisco i tipi delle variabili
 export interface Product {
   id: number;
   name: string;

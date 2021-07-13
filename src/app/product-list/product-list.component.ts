@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+
+// prendo un array da un ts, come se fosse un json
 import { products } from '../products';
 
 @Component({
