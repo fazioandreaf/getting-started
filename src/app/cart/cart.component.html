@@ -1,4 +1,4 @@
-<h3>cart</h3>
+<h3>Cart</h3>
 <p>
   <a routerLink="/shipping">Shipping Prices</a>
 </p>
@@ -6,3 +6,17 @@
   <span>{{ item.name }}</span>
   <span>{{ item.price | currency }}</span>
 </div>
+<!-- questi elementi sono presenti dentro il ts, collegato con checoutform, allego pure la funzione submit-->
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <!-- formControlName   e il nome che sta dentro il checkoutForm-->
+  <div>
+    <label for="name"> Name </label>
+    <input id="name" type="text" formControlName="name" />
+  </div>
+
+  <div>
+    <label for="address"> Address </label>
+    <input id="address" type="text" formControlName="address" />
+  </div>
+  <button class="button btn" type="submit">Purchase</button>
+</form>

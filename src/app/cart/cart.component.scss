@@ -4,3 +4,20 @@
   display: flex;
   justify-content: space-evenly;
 }
+form {
+  > div {
+    display: flex;
+    flex-direction: column;
+    label {
+      text-transform: uppercase;
+    }
+    input[type="text"]{
+      align-self: flex-start;
+    }
+  }
+  .button{
+    margin: 5px 0;
+    color: white;
+    background-color: #1976d2;
+  }
+}

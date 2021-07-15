@@ -1,28 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
 
 import { CartService } from '../cart.service';
-
-// serve per ricevere i dati dal padre, esempio il product dall'altro component
-import { Input } from '@angular/core';
-
-// serve per mandare una informazione ad un altro compoonente
-import { Output, EventEmitter } from '@angular/core';
-
-// prendo un array da un ts, come se fosse un json
+// convenient methods for generating controls.
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
 })
-export class CartComponent implements OnInit {
+export class CartComponent {
   // il product non serve perchè lo tiriamo dal servizio
-  constructor(private cartService: CartService) {}
-  items = this.cartService.getItems();
+  constructor(
+    private cartService: CartService,
+    private formBuilder: FormBuilder
+  ) {}
   // items diventa un array di oggetti
-  ngOnInit() {
-    // console.log(this.items);
+  items = this.cartService.getItems();
+
+  //  Construct a new FormGroup instance.
+  checkoutForm = this.formBuilder.group({
+    name: '',
+    address: '',
+  });
+
+  onSubmit(): void {
+    // ritorn un array vuoto
+    this.items = this.cartService.clearCart();
+    // The current value of the control.
+    console.warn('Your order has been submitted', this.checkoutForm.value);
+    //Resets the FormGroup, marks all descendants pristine and untouched and sets the value of all descendants to null.
+    this.checkoutForm.reset();
   }
 }
