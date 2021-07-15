@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from './products';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +8,7 @@ import { Product } from './products';
 export class CartService {
   // serie di prodotti che hanno il tipo di product
   items: Product[] = [];
-  constructor() {}
+  constructor(private http: HttpClient) {}
   addToCart(product: Product) {
     this.items.push(product);
   }
@@ -17,5 +18,10 @@ export class CartService {
   clearCart() {
     if (this.items.length != 0) this.items = [];
     return this.items;
+  }
+  getShippingPrices() {
+    return this.http.get<{ type: string; price: number }[]>(
+      '/assets/shipping.json'
+    );
   }
 }
